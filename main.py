@@ -1,0 +1,37 @@
+"""
+--- Alien Invation --- 
+description : In Alien Invasion, the player controls a ship that appears at
+the bottom center of the screen. The player can move the ship
+right and left using the arrow keys and shoot bullets using the
+spacebar. When the game begins, a fleet of aliens fills the sky
+and moves across and down the screen. The player shoots and
+destroys the aliens. If the player shoots all the aliens, a new fleet
+appears that moves faster than the previous fleet. If any alien hits
+the player’s ship or reaches the bottom of the screen, the player
+loses a ship. If the player loses three ships, the game ends.
+"""
+
+import pygame
+import sys 
+
+def run_game():
+    # pygame setup
+    pygame.init()
+    screen = pygame.display.set_mode((1280, 720))
+    pygame.display.set_caption("Alien Invation")
+
+    bg_color = (230, 230, 230)
+
+    while True:
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+
+        screen.fill(bg_color)
+
+        # flip() the display to put your work on screen
+        pygame.display.flip()
+
+run_game()
+
