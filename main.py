@@ -12,26 +12,27 @@ loses a ship. If the player loses three ships, the game ends.
 """
 
 import pygame
-import sys 
+
+from settings import Settings
+from ship import Ship
+import game_functions as gf 
 
 def run_game():
     # pygame setup
     pygame.init()
-    screen = pygame.display.set_mode((1280, 720))
+
+    ai_settings = Settings()
+    screen = pygame.display.set_mode(
+        (ai_settings.screen_width, ai_settings.screen_height)
+    )
     pygame.display.set_caption("Alien Invation")
 
-    bg_color = (230, 230, 230)
+    ship = Ship(ai_settings, screen)  
 
     while True:
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-
-        screen.fill(bg_color)
-
-        # flip() the display to put your work on screen
-        pygame.display.flip()
+        gf.check_events(ship)
+        ship.update()
+        gf.update_screen(ai_settings, screen, ship)        
 
 run_game()
 
