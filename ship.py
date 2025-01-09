@@ -30,7 +30,7 @@ class Ship():
         if self.move_left and self.rect.left > 0:
             self.center -= self.ai_settings.ship_speed_factor
 
-        # Updating rect obj from sefl.center
+        # Updating rect obj from self.center
         self.rect.centerx = int(self.center)
 
     def blitme(self):
