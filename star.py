@@ -5,6 +5,7 @@ class Star():
     def __init__(self, screen) -> None:
         ''' Initializes a star '''
         self.screen = screen
+        self.screen_rect = screen.get_rect()
 
         self.star = pygame.image.load('../alien invation/img/star-fin.bmp')
         self.star_rect = self.star.get_rect()
@@ -29,6 +30,4 @@ class Star():
 
             if star['lifetime'] <= 0:
                 self.active_stars.remove(star)
-            
-
 
