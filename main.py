@@ -14,12 +14,12 @@ loses a ship. If the player loses three ships, the game ends.
 import pygame
 from pygame.sprite import Group
 
-from alien import Alien
 from settings import Settings
 from ship import Ship
 from star import Star
 from game_stats import GameStats
 from button import Button
+from scoreboard import Scoreboard
 import game_functions as gf 
 
 def run_game():
@@ -33,6 +33,7 @@ def run_game():
     pygame.display.set_caption("Alien Invation")
     play_btn = Button(ai_settings, screen, "Play")
     stats = GameStats(ai_settings)
+    sb = Scoreboard(ai_settings, screen, stats)
 
     # Create a ship, star, Group of bullets and aliens
     ship = Ship(ai_settings, screen)  
@@ -45,15 +46,16 @@ def run_game():
     gf.create_fleet(ai_settings, screen, ship, aliens)
 
     while True:
-        gf.check_events(ai_settings, screen, stats, play_btn, aliens,
+        gf.check_events(ai_settings, screen, stats, sb, play_btn, aliens,
                         ship, bullets)
         
         if stats.game_active:
             ship.update()
-            gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
-            gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
+            gf.update_bullets(ai_settings, screen, stats, sb,
+                              ship, aliens, bullets)
+            gf.update_aliens(ai_settings, stats, screen, sb, ship, aliens, bullets)
             
-        gf.update_screen(ai_settings, screen, stats, star, ship, aliens, 
+        gf.update_screen(ai_settings, screen, stats, sb, star, ship, aliens, 
                          bullets, play_btn) 
 
 run_game()
