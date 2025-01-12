@@ -17,10 +17,10 @@ class Alien(Sprite):
 
         # Start new alien near the top of the screen
         self.rect.x = self.rect.width
-        self.rect.y = self.rect.height
+        self.rect.y = self.rect.height + 500
 
         # store the aliens start position
-        self.x = float(self.rect.x)
+        self.x = float(self.rect.x + 500)
 
     def check_edges(self):
         ''' Return True if any alien reaches either edge '''

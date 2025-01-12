@@ -15,4 +15,5 @@ class GameStats():
         self.ship_left = self.ai_settings.ship_limit
         self.score = 0
         self.level = 1
+        self.ai_settings.initialize_dynamic_settings()
 
